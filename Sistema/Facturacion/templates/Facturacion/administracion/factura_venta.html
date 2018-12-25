@@ -1,0 +1,401 @@
+{% extends 'Facturacion/base.html' %} 
+{% block contenido %}
+{% load staticfiles %}
+   
+     <!-- Font Awesome -->
+    <link rel="stylesheet" href="{%static 'Factura/css/font-awesome.min.css'%}">
+    <!-- Select2 -->
+	<link rel="stylesheet" href="{%static 'Factura/css/select2.min.css'%}">
+	<!-- Theme style -->
+    <link rel="stylesheet" href="{%static 'Factura/css/AdminLTE.min.css'%}">   
+    <!-- Responsive drop menu in tables -->
+	<link rel="stylesheet" href="{%static 'Factura/css/responsive_drop.css'%}">
+    
+    
+
+
+
+
+
+
+
+
+    <!-- page content -->
+<div class="right_col" role="main">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Detalles de la Factura</h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li>
+              <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <br />
+        <button type="submit" class="btn btn-success pull-right "><i class="fa fa-print"></i> Guardar e imprimir</button>
+
+         <div class="x_panel">
+        <div class="x_title">
+         <div class="row">
+
+                                    <div class="col-md-5">
+                                        <label>Cliente</label>
+										<div class="input-group">
+											<select class="form-control select2 select2-hidden-accessible" name="customer_id" id="customer_id" tabindex="-1" aria-hidden="true">
+												<option value="">Selecciona Cliente</option>
+											</select><span class="select2 select2-container select2-container--default select2-container--below" dir="ltr" style="width: 321px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-customer_id-container"><span class="select2-selection__rendered" id="select2-customer_id-container" title="Selecciona Cliente">Selecciona Cliente</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+											<span class="input-group-btn">
+												<button class="btn btn-default" type="button" data-toggle="modal" data-target="#cliente_modal"><i class="fa fa-plus"></i> Nuevo</button>
+											</span>
+										</div>	
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Fecha</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control datepicker" name="purchase_date" value="24/12/2018" disabled="">
+
+                                            <div class="input-group-addon">
+                                                <a href="#"><i class="fa fa-calendar"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-md-2">
+
+                                        <label>Factura Nº</label>
+                                       <input type="text" class="form-control" name="sale_number" id="sale_number" required="" value="4761">
+                                    </div>
+									
+									<div class="col-md-2">
+
+                                        <label>Agregar productos</label>
+                                       <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i> Buscar productos</button>
+                                    </div>
+                                    
+
+					
+					<div id="resultados_ajax" class="col-md-12" style="margin-top:4px"></div><!-- Carga los datos ajax -->
+					<div id="resultados" class="col-md-12" style="margin-top:4px"> 	<div class="table-responsive">
+<table class="table">
+<tbody><tr>
+	<th>CODIGO</th>
+	<th class="text-center">CANT.</th>
+	<th>DESCRIPCION</th>
+	<th><span class="pull-right">PRECIO UNIT.</span></th>
+	<th><span class="pull-right">PRECIO TOTAL</span></th>
+	<th></th>
+</tr>
+
+<tr>
+	<td colspan="4"><span class="pull-right">NETO $</span></td>
+	<td><span class="pull-right">0.00</span></td>
+	<td></td>
+</tr>
+<tr>
+	<td colspan="4" class="text-right">
+		<select name="taxes" id="taxes" onchange="tax_value(this.value)">
+		<option value="10.00" selected="">IVA 12.00 %</option>			
+		</select>
+	
+	</td>
+	<td><span class="pull-right">0.00</span></td>
+	<td></td>
+</tr>
+<tr>
+	<td colspan="4"><span class="pull-right">TOTAL $</span></td>
+	<td><span class="pull-right">0.00</span></td>
+	<td></td>
+</tr>
+</tbody></table>
+</div>
+<!-- Modal -->
+			<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+			  <div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+					<h4 class="modal-title" id="myModalLabel">Buscar productos</h4>
+				  </div>
+				  <div class="modal-body">
+					<form class="form-horizontal">
+					  <div class="form-group">
+						<div class="col-sm-6">
+						  <input type="text" class="form-control" id="q" placeholder="Buscar productos" onkeyup="load(1)">
+						</div>
+						<button type="button" class="btn btn-default" onclick="load(1)"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+					  </div>
+					</form>
+					<div id="loader" style="position: absolute; text-align: center; top: 55px; width: 100%;"></div><!-- Carga gif animado -->
+					<div class="outer_div"> 				<div class="table-responsive">
+			  <table class="table">
+				<tbody><tr class="warning">
+					<th>Código</th>
+					<th>Producto</th>
+					<th>Fabricante</th>
+					<th class="text-center">Stock</th>
+					<th><span class="pull-right">Cant.</span></th>
+					<th><span class="pull-right">Precio</span></th>
+					<th style="width: 36px;"></th>
+				</tr>
+									<tr>
+						<td>0008</td>
+						<td> Asus Taichi Ultrabooks delayed</td>
+						<td>Asus</td>
+						<td class="text-center">1879</td>
+						<td class="col-xs-1">
+							<div class="pull-right">
+								<input type="number" class="form-control" style="text-align:right" id="cantidad_8" value="1">
+							</div>
+						</td>
+						
+						<td class="col-xs-2">
+						<div class="input-group pull-right">
+							<div class="input-group-addon">$</div>
+							<input type="text" class="form-control" style="text-align:right" id="precio_venta_8" value="1230.00">
+						</div>
+						</td>
+						<td><span class="pull-right"><a href="#" onclick="agregar('8')"><i class="glyphicon glyphicon-shopping-cart " style="font-size:24px;color: #5CB85C;"></i></a></span></td>
+					</tr>
+										<tr>
+						<td>686856856</td>
+						<td>ABECEDARIO Y NUMEROS DE FOAMY </td>
+						<td>HP</td>
+						<td class="text-center">0</td>
+						<td class="col-xs-1">
+							<div class="pull-right">
+								<input type="number" class="form-control" style="text-align:right" id="cantidad_9408" value="1">
+							</div>
+						</td>
+						
+						<td class="col-xs-2">
+						<div class="input-group pull-right">
+							<div class="input-group-addon">$</div>
+							<input type="text" class="form-control" style="text-align:right" id="precio_venta_9408" value="32.00">
+						</div>
+						</td>
+						<td><span class="pull-right"><a href="#" onclick="agregar('9408')"><i class="glyphicon glyphicon-shopping-cart " style="font-size:24px;color: #5CB85C;"></i></a></span></td>
+					</tr>
+										<tr>
+						<td>0009</td>
+						<td>Acer Aspire V5-471G Notebook</td>
+						<td>Acer</td>
+						<td class="text-center">0</td>
+						<td class="col-xs-1">
+							<div class="pull-right">
+								<input type="number" class="form-control" style="text-align:right" id="cantidad_9" value="1">
+							</div>
+						</td>
+						
+						<td class="col-xs-2">
+						<div class="input-group pull-right">
+							<div class="input-group-addon">$</div>
+							<input type="text" class="form-control" style="text-align:right" id="precio_venta_9" value="1060.00">
+						</div>
+						</td>
+						<td><span class="pull-right"><a href="#" onclick="agregar('9')"><i class="glyphicon glyphicon-shopping-cart " style="font-size:24px;color: #5CB85C;"></i></a></span></td>
+					</tr>
+										<tr>
+						<td>01</td>
+						<td>Alambre de amarre</td>
+						<td>Acer</td>
+						<td class="text-center">-1</td>
+						<td class="col-xs-1">
+							<div class="pull-right">
+								<input type="number" class="form-control" style="text-align:right" id="cantidad_9414" value="1">
+							</div>
+						</td>
+						
+						<td class="col-xs-2">
+						<div class="input-group pull-right">
+							<div class="input-group-addon">$</div>
+							<input type="text" class="form-control" style="text-align:right" id="precio_venta_9414" value="110.00">
+						</div>
+						</td>
+						<td><span class="pull-right"><a href="#" onclick="agregar('9414')"><i class="glyphicon glyphicon-shopping-cart " style="font-size:24px;color: #5CB85C;"></i></a></span></td>
+					</tr>
+										<tr>
+						<td>46546546</td>
+						<td>azucar</td>
+						<td>Sony</td>
+						<td class="text-center">0</td>
+						<td class="col-xs-1">
+							<div class="pull-right">
+								<input type="number" class="form-control" style="text-align:right" id="cantidad_9401" value="1">
+							</div>
+						</td>
+						
+						<td class="col-xs-2">
+						<div class="input-group pull-right">
+							<div class="input-group-addon">$</div>
+							<input type="text" class="form-control" style="text-align:right" id="precio_venta_9401" value="200.00">
+						</div>
+						</td>
+						<td><span class="pull-right"><a href="#" onclick="agregar('9401')"><i class="glyphicon glyphicon-shopping-cart " style="font-size:24px;color: #5CB85C;"></i></a></span></td>
+					</tr>
+									<tr>
+					<td colspan="7"><span class="pull-right"><ul class="pagination pagination-sm no-margin pull-right"><li class="disabled"><span><a>‹ Anterior</a></span></li><li class="active"><a>1</a></li><li><a href="javascript:void(0);" onclick="load(2)">2</a></li><li><a href="javascript:void(0);" onclick="load(3)">3</a></li><li><a href="javascript:void(0);" onclick="load(4)">4</a></li><li><a href="javascript:void(0);" onclick="load(5)">5</a></li><li><a>...</a></li><li><a href="javascript:void(0);" onclick="load(7)">7</a></li><li><span><a href="javascript:void(0);" onclick="load(2)">Siguiente ›</a></span></li></ul></span>
+					</td>
+				</tr>
+			  </tbody></table>
+			</div>
+			</div><!-- Datos ajax Final -->
+				  </div>
+				  <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					
+				  </div>
+				</div>
+			  </div>
+			</div> 
+<form class="form-horizontal" method="post" id="guardar_cliente" name="guardar_cliente">
+<!-- Modal -->
+<div class="modal fade" id="cliente_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Nuevo Cliente</h4>
+      </div>
+      <div class="modal-body">
+	  
+      
+ <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#activity" data-toggle="tab">Cliente</a></li>
+                  <!-- <li><a href="#timeline" data-toggle="tab">Contacto</a></li>
+                  <li><a href="#settings" data-toggle="tab">Dirección</a></li> -->
+                </ul>
+                <div class="tab-content">
+                  <div class="active tab-pane" id="activity">
+                    
+                    <div class="form-group">
+                        <label for="tax_number" class="col-sm-3 control-label">Cedula/Ruc*</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="tax_number" name="tax_number"  required="required">
+                        </div>
+                      </div>
+
+
+                    <div class="form-group">
+                        <label for="bussines_name" class="col-sm-3 control-label">Nombres*</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="bussines_name" name="bussines_name" required="required">
+                        </div>
+                      </div>
+                      <div class="form-group">
+							<label for="last_name" class="col-sm-3 control-label">Apellidos*</label>
+							<div class="col-sm-9">
+							  <input type="text" class="form-control" id="last_name" name="last_name" required="required">
+							</div>
+						</div>
+						 <div class="form-group">
+                        <label for="address1" class="col-sm-3 control-label">Dirección</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="address1" name="address1">
+                        </div>
+                      </div>
+                      <div class="form-group">
+							<label for="email" class="col-sm-3 control-label">Email</label>
+							<div class="col-sm-9">
+							  <input type="email" class="form-control" id="email" name="email">
+							</div>
+						</div>
+
+					   
+					  <!--<div class="form-group">
+                        <label for="website" class="col-sm-3 control-label">Sitio Web</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="website" name="website">
+                        </div>
+                      </div> -->
+					  <div class="form-group">
+                        <label for="work_phone" class="col-sm-3 control-label">Teléfono*</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="work_phone" name="work_phone" required="">
+                        </div>
+                      </div>
+       	  
+                      </div>                  
+                  </div><!-- /.tab-pane -->
+                </div><!-- /.tab-content -->
+              </div><!-- /.nav-tabs-custom -->
+	  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="submit" id="guardar_datos" class="btn btn-primary">Registrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>    <div class="wrapper">
+      <header class="main-header">
+		
+
+</div><!-- Carga los datos ajax -->
+					<div class="box-footer">
+						
+                    </div>
+	
+		   </div><!-- /.box-body -->
+            
+          </div><!-- /.box -->	
+     
+        </section><!-- /.content -->
+		      </div><!-- /.content-wrapper -->	
+	</div>
+   </div><!-- ./wrapper -->	
+									</form>	
+
+								</div>
+                                </div>
+                                 </div>
+
+
+                            </div></form>                              
+                        </div>
+
+                                 <!-- jQuery 2.1.4 -->
+    <script src="{%static 'Factura/js/jQuery-2.1.4.min.js'%}"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{%static 'Factura/js/jquery-ui.min.js'%}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="{%static 'Factura/js/bootstrap.min.js'%}"></script>
+    <!-- Morris.js charts -->
+    <script src="{%static 'Factura/js/raphael-min.js'%}"></script>
+    <script src="{%static 'Factura/js/morris.min.js'%}"></script>
+    <!-- Sparkline -->
+    <script src="{%static 'Factura/js/jquery.sparkline.min.js'%}"></script>
+    <!-- jvectormap -->
+    <script src="{%static 'Factura/js/jquery-jvectormap-1.2.2.min.js'%}"></script>
+    <script src="{%static 'Factura/js/jquery-jvectormap-world-mill-en.js'%}"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="{%static 'Factura/js/jquery.knob.js'%}"></script>
+    <!-- daterangepicker -->
+    <script src="{%static 'Factura/js/moment.min.js'%}"></script>
+    <script src="{%static 'Factura/js/daterangepicker.js'%}"></script>
+    <!-- datepicker -->
+    <script src="{%static 'Factura/js/bootstrap-datepicker.js'%}"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="{%static 'Factura/js/bootstrap3-wysihtml5.all.min.js'%}"></script>
+    <!-- Slimscroll -->
+    <script src="{%static 'Factura/js/jquery.slimscroll.min.js'%}"></script>
+    <!-- FastClick -->
+    <script src="{%static 'Factura/js/fastclick.min.js'%}"></script>
+    <!-- AdminLTE App -->
+    <script src="{%static 'Factura/js/app.min.js'%}"></script>
+   
+    <!-- AdminLTE for demo purposes -->
+    <script src="{%static 'Factura/js/demo.js'%}"></script>
+	<!-- Select2 -->
+    <script src="{%static 'Factura/js/select2.full.min.js'%}"></script>
+	<script src="{%static 'Factura/js/VentanaCentrada.js'%}"></script>
+                                    
+{% endblock contenido %}

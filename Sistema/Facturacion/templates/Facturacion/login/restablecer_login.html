@@ -1,0 +1,95 @@
+{% load static %} <!DOCTYPE html>
+<html lang="es">
+  <html>
+    <head>
+      <!-- Meta -->
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <!-- Site Title -->
+      <link
+        rel="icon "
+        sizes="64x64"
+        href="{%static 'img/sistema/icons8-carrito-de-compras-64.png'%}"
+      />
+      <title>Facturación</title>
+      <link
+        href="https://fonts.googleapis.com/css?family=Lato:100"
+        rel="stylesheet"
+        type="text/css"
+      />
+      <!-- Compiled and minified CSS -->
+      <link
+        rel="stylesheet"
+        href="{%static 'materialize/css/materialize.min.css'%}"
+      />
+      <link rel="stylesheet" href="{%static 'css/login.css'%}" />
+
+      <link rel="stylesheet" href="{%static 'css/font-awesome.min.css'%}" />
+    </head>
+    <body>
+      <div class="row">
+        <form
+          method="POST"
+          action="###"
+          accept-charset="UTF-8"
+          id="form-reestablecer-password"
+        >
+          <input
+            name="_token"
+            type="hidden"
+            value="xQkNgT0S3WjSdicCA7yGE3Y0Fi71chCplSj0Rqxb"
+          />
+          <div class="contenedor-reestablecer-password-email">
+            <div class="contenedor-form-email">
+              <div class="input-field">
+                <i class="fa fa-at prefix" aria-hidden="true"></i>
+                <input id="email" name="email" type="text" />
+                <label for="email">Correo electrónico</label>
+              </div>
+
+              <div
+                class="center contenedor-botones-reestablecer-password"
+                id="contenedor-botones-reestablecer-password"
+              >
+                <a
+                  class="btn waves-effect blue darken-4 waves-light focus-tecla"
+                  id="btn-reestablecer-password"
+                  href="{% url 'login' %}"
+                  data-focus-tecla="0"
+                  >Restablecer</a
+                >
+              </div>
+              <div
+                class="contenedor-errores hide col s12"
+                id="contenedor-errores-reestablecer-password"
+              ></div>
+              <div
+                class="col s12 contenedor-confirmacion hide"
+                id="contenedor-confirmacion-reestablecer-password"
+              ></div>
+              <div class="progress hide" id="progres-reestablecer-password">
+                <div class="indeterminate cyan"></div>
+              </div>
+              <input id="base_url" type="hidden" value="###" />
+            </div>
+          </div>
+         <!--  <p
+            class="center copyright"
+            style="font-size: small;color: orange !important;"
+          >
+            Copyright © 2018 Marcelo Carrion
+          </p> -->
+        </form>
+      </div>
+
+      <script src="{%static 'js/jquery-2.2.3.min.js'%}"></script>
+      <!-- Compiled and minified JavaScript -->
+      <script src="{%static 'materialize/js/materialize.min.js'%}"></script>
+      <!-- <script src="{%static 'js/global.js'%}"></script> -->
+      <script src="{%static 'js/login.js'%}"></script>
+
+      <div class="hiddendiv common"></div>
+    </body>
+  </html>
+</html>

@@ -1,0 +1,234 @@
+{% extends 'Facturacion/base.html' %} 
+{% block contenido %}
+<!-- page content -->
+<div class="right_col" role="main">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel fondo-radial">
+        <div class="x_title">
+          <h2 class="efecto1">Nuevo Usuario</h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li>
+              <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <br />
+          <form
+            id="demo-form2"
+            data-parsley-validate
+            class="form-horizontal form-label-left"
+          >
+            <div class="form-group">
+              <label
+                class="control-label col-md-3 col-sm-3 col-xs-12"
+                for="first-name"
+                >Nombre<span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input
+                  type="text"
+                  id="first-name"
+                  required="required"
+                  class="form-control col-md-7 col-xs-12"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label
+                class="control-label col-md-3 col-sm-3 col-xs-12"
+                for="last-name"
+                >Apellidos<span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input
+                  type="text"
+                  id="last-name"
+                  name="last-name"
+                  required="required"
+                  class="form-control col-md-7 col-xs-12"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label
+                for="middle-name"
+                class="control-label col-md-3 col-sm-3 col-xs-12"
+                >Cedula/Ruc <span class="required">*</span></label
+              >
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input
+                  id="middle-name"
+                  class="form-control col-md-7 col-xs-12"
+                  type="text"
+                  name="middle-name"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label
+                class="control-label col-md-3 col-sm-3 col-xs-12"
+                for="first-name"
+                >Dirección<span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input
+                  type="text"
+                  id="first-name"
+                  required="required"
+                  class="form-control col-md-7 col-xs-12"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label
+                class="control-label col-md-3 col-sm-3 col-xs-12"
+                for="first-name"
+                >Emaill</label
+              >
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input
+                  type="text"
+                  id="first-name"
+                  required="required"
+                  class="form-control col-md-7 col-xs-12"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label
+                class="control-label col-md-3 col-sm-3 col-xs-12"
+                for="first-name"
+                >Telefono<span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input
+                  type="text"
+                  id="first-name"
+                  required="required"
+                  class="form-control col-md-7 col-xs-12"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+                <label
+                  class="control-label col-md-3 col-sm-3 col-xs-12"
+                  for="first-name"
+                  >NomUsuario<span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input
+                    type="text"
+                    id="first-name"
+                    required="required"
+                    class="form-control col-md-7 col-xs-12"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label
+                  class="control-label col-md-3 col-sm-3 col-xs-12"
+                  for="first-name"
+                  >Clave<span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input
+                    type="text"
+                    id="first-name"
+                    required="required"
+                    class="form-control col-md-7 col-xs-12"
+                  />
+                </div>
+              </div>
+
+            <div class="ln_solid"></div>
+            <div class="form-group">
+              <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+               <!--  <button class="btn btn-primary" type="button">Cancelar</button>
+                <button class="btn btn-primary" type="reset">Reset</button> -->
+                <button type="submit" class="btn btn-success">Guardar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel fondo-radial">
+        <div class="x_title">
+          <h2 class="efecto1">Lista Usuarios</h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <!-- <p class="text-muted font-13 m-b-30">
+                              DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
+                            </p>-->
+          <table id="datatable" class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Cédula/Ruc</th>
+                <th>Dirección</th>
+                <th>Emaill</th>
+                <th>Telefono</th>
+                <th>NomUsuario</th>
+                <th>Clave</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>1234566723</td>
+                <td>Loja</td>
+                <td>tiger@gmail.com</td>
+                <td>0986543123</td>
+                <td>Tiger</td>
+                <td>******</td>
+              </tr>
+              <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>11098334561</td>
+                <td>Quito</td>
+                <td>garrett@gmail.com</td>
+                <td>09734567128</td>
+                <td>Garrett</td>
+                <td>******</td>
+              </tr>
+              <tr>
+                <td>Ashton Cox</td>
+                <td>Junior Technical Author</td>
+                <td>11874556612</td>
+                <td>Cuenca</td>
+                <td>ashton@gmail.com</td>
+                <td>0873456713</td>
+                <td>Ashton</td>
+                <td>******</td>
+              </tr>
+              <tr>
+                <td>Cedric Kelly</td>
+                <td>Senior Javascript Developer</td>
+                <td>0101566382</td>
+                <td>Manta</td>
+                <td>cedric@gmail.com</td>
+                <td>087564324</td>
+                <td>Cedric</td>
+                <td>******</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+</div>
+<!-- /page content -->
+{% endblock contenido %}

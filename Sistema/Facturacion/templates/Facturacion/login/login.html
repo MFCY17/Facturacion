@@ -1,0 +1,141 @@
+{% load static %}     
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+     
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Site Title -->
+    <link
+      rel="icon "
+      sizes="64x64"
+      href="{%static 'img/sistema/icons8-carrito-de-compras-64.png'%}"
+    />
+    <title>Iniciar sesión </title>
+    <!-- Compiled and minified CSS -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="{%static 'materialize/css/materialize.min.css'%}"
+    />
+    <link rel="stylesheet" href="{%static 'css/login.css'%}" />
+    <!--
+      <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
+    -->
+    <link rel="stylesheet" href="{%static 'css/font-awesome.min.css'%}" />
+  </head>
+
+  <body>
+    <div class="row">
+      <form
+        method="POST"
+        action="#"
+        accept-charset="UTF-8"
+        id="form-inicio-sesion"
+      >
+        <input
+          name="_token"
+          type="hidden"
+          value="tz4H50nqMtXS4WRdw37ZXli4BOJABiwl33McFlyM"
+        />
+
+        <div
+          class="contenedor-inicio-sesion"
+          style="margin-left:auto; margin-right:auto;"
+        >
+        {% csrf_token %}
+          <div class="contenedor-form">
+            <div class="input-field">
+              <i class="fa fa-user prefix" aria-hidden="true"></i>
+              <label for="usuario">Usuario</label>
+              <input class="form control" type="text" id="inputUser" name="username" />
+            </div>
+
+            <div class="input-field">
+              <i class="fa fa-lock prefix" aria-hidden="true"></i>
+              <label for="password">Contraseña</label>
+              <input  class="form control"  type="password" name="password" id="inputPassword"  required />
+            </div>
+            {% csrf_token %}
+            <div class="center" id="contenedor-boton-inicio">
+              <a
+                class="btn waves-effect blue darken-4 waves-light focus-tecla"
+                id="btn-inicio-sesion"
+                style="margin-top: 30px;"
+                href="{% url 'base' %}"
+                type="submit"
+                value="Ingresar"
+                
+                >Ingresar</a
+              >
+            </div>
+
+            <div
+              class="contenedor-errores hide col s12"
+              id="contenedor-errores-login"
+            ></div>
+            <div
+              class="col s12 contenedor-confirmacion hide"
+              id="contenedor-confirmacion-login"
+            ></div>
+            <script>
+              if (localStorage.state === null || localStorage.state != "-1") {
+              }
+            </script>
+
+            <a
+              href="{% url 'restablecer' %}"
+              class="col s12 blue-text text-darken-4 center focus-tecla"
+              style="margin-top: 15px !important; font-size: small;"
+              data-focus-tecla="1"
+              >¿Olvidaste la contraseña?</a
+            >
+            <!-- <a
+              href="#"
+              class="col s12 blue-text text-darken-4 center focus-tecla"
+              style="margin-top: 15px !important; font-size: small;"
+              data-focus-tecla="2"
+              >Preguntas frecuentes</a
+            > -->
+
+            <div class="progress hide" id="progres-inicio-sesion">
+              <div class="indeterminate cyan"></div>
+            </div>
+
+            <input id="base_url" type="hidden" value="#" />
+          </div>
+        </div>
+
+        <!-- <p class="center" style="font-size: small;color: orange !important;">
+          Copyright © 2018
+          <a
+            style="color: #0d47a1;"
+            href="#"
+            class="focus-tecla"
+            data-focus-tecla="4"
+            >Marcelo Carrion</a
+          >
+        </p> -->
+      </form>
+    </div>
+
+    <script src="{%static 'js/jquery-2.2.3.min.js'%}"></script>
+
+    <!-- Compiled and minified JavaScript -->
+
+    <script src="{%static 'materialize/js/materialize.min.js'%}"></script>
+
+    <!-- <script src="{%static 'js/global.js'%}"></script> -->
+
+    <script src="{%static 'js/login.js'%}"></script>
+       
+
+    <div class="hiddendiv common"></div>
+  </body>
+</html>
