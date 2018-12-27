@@ -23,9 +23,14 @@ urlpatterns = [
     url(r'^restablecer/', views.restablecer, name='restablecer'),
     url(r'^administracion/', views.base, name='base'),
     url(r'^crear_clientes/', views.clientes, name='clientes'),
+    url(r'^listar_clientes/', views.clientes_list, name='clientes_list'),
     url(r'^crear_productos/', views.productos, name='productos'),
+    url(r'^listar_productos/', views.productos_list, name='productos_list'),
     url(r'^crear_usuarios/', views.usuarios, name='usuarios'),
     url(r'^nueva_venta/', views.factura_venta, name='factura_venta'),
+    url(r'^calendario/', views.calendario, name='calendario'),
+    url(r'^calculadora/', views.calculadora, name='calculadora'),
+
 
 
 

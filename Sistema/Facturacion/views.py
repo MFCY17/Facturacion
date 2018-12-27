@@ -14,13 +14,25 @@ def base (request):
     return render(request,"Facturacion/base.html",{})  
 
 def clientes (request): 
-    return render(request,"Facturacion/administracion/clientes.html",{})   
+    return render(request,"Facturacion/administracion/crear_clientes.html",{})  
+
+def clientes_list (request): 
+    return render(request,"Facturacion/administracion/listar_clientes.html",{}) 
 
 def productos (request): 
-    return render(request,"Facturacion/administracion/productos.html",{})
+    return render(request,"Facturacion/administracion/crear_productos.html",{})
+
+def productos_list (request): 
+    return render(request,"Facturacion/administracion/listar_productos.html",{})
     
 def usuarios (request):
-    return render(request,"Facturacion/administracion/usuarios.html", {})    
+    return render(request,"Facturacion/administracion/usuarios.html", {})     
 
 def factura_venta (request): 
-    return render(request,"Facturacion/administracion/factura_venta.html",{})   
+    return render(request,"Facturacion/administracion/factura_venta.html",{})  
+
+def calendario (request): 
+    return render(request,"Facturacion/administracion/calendario.html",{})
+
+def calculadora (request): 
+    return render(request,"Facturacion/administracion/calculadora.html",{})   
