@@ -31,6 +31,9 @@ def usuarios (request):
 def factura_venta (request): 
     return render(request,"Facturacion/administracion/factura_venta.html",{})  
 
+def factura_list (request): 
+    return render(request,"Facturacion/administracion/listar_factura.html",{})
+
 def calendario (request): 
     return render(request,"Facturacion/administracion/calendario.html",{})
 

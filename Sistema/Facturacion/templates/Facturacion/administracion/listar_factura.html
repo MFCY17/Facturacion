@@ -5,7 +5,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3><small>Lista de Productos</small></h3>
+                <h3><small>Lista de Factura</small></h3>
               </div>
 
               <div class="title_right">
@@ -26,11 +26,12 @@
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Productos</h2>
+                    <h2>Factura</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
                       
+                        
                       </li>
                       <li><a class="close-link"><i class="fa fa-close"></i></a>
                       </li>
@@ -43,11 +44,11 @@
                     <table class="table table-striped projects">
                       <thead>
                         <tr>
-                          <th style="width: 1%">#</th>
-                          <th style="width: 20%">Nombre Producto</th>
-                          <th>Detalle Producto</th>
-                          <th>Stock</th>
-                          <th>Precio Venta</th>
+                          <th style="width: 1%">FacturaNº</th>
+                          <th style="width: 20%">Cliente</th>
+                          <th>Fecha</th>
+                          <th>Vendedor</th>
+                          <th>Total</th>
                           <th style="width: 20%">Acciones</th>
                         </tr>
                       </thead>
@@ -55,17 +56,17 @@
                         <tr>
                           <td>1</td>
                           <td>
-                            <a>Cama</a>
+                            <a>Carrion Iyescas</a>
                             <br />
-                           <!--  <small>Created 01.01.2015</small> -->
+                           <!--  <small>Creado 28.12.2018</small> -->
                           </td>
                           <td>
                             <ul class="list-inline">
-                               <a>  Cama de 2 Plasas</a>
-                             <!--  <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
                               <li>
+                                 <a>1-12-2018</a>
+                               <!--  <img src="images/user.png" class="avatar" alt="Avatar"> -->
+                              </li>
+                             <!--  <li>
                                 <img src="images/user.png" class="avatar" alt="Avatar">
                               </li>
                               <li>
@@ -76,16 +77,15 @@
                               </li> -->
                             </ul>
                           </td>
-                           
                           <td class="project_progress">
-                            <a>4</a>
                             <!-- <div class="progress progress_sm">
                               <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="57"></div>
-                            </div>
-                            <small>57% Complete</small> -->
+                            </div> -->
+                             <a>{{user.username|capfirst}}</a>
+                           <!--  <small>57% Complete</small> -->
                           </td>
                           <td>
-                            <a> $1200</a>
+                             <a>$200</a>
                             <!-- <button type="button" class="btn btn-success btn-xs">Success</button> -->
                           </td>
                           <td>
@@ -97,32 +97,32 @@
                         <tr>
                           <td>2</td>
                           <td>
-                            <a>Comedor</a>
+                            <a>Accountant</a>
                             <br />
-                           <!--  <small>Created 01.01.2015</small> -->
+                            <!-- <small>Creado 21.12.2018</small> -->
                           </td>
                           <td>
                             <ul class="list-inline">
-                               <a>Comedor de 8 sillas</a>
-                              <!-- <li>
-                                <img src="images/user.png" class="avatar" alt="Avatar">
-                              </li>
                               <li>
+                                 <a>20-11-2018</a>
+                                <!-- <img src="images/user.png" class="avatar" alt="Avatar"> -->
+                              </li>
+                              <!-- <li>
                                 <img src="images/user.png" class="avatar" alt="Avatar">
                               </li> -->
                             </ul>
                           </td>
                           <td class="project_progress">
-                            <a> 5</a>
                            <!--  <div class="progress progress_sm">
                               <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="47"></div>
-                            </div>
-                            <small>47% Complete</small> -->
+                            </div> -->
+                             <a>{{user.username|capfirst}}</a>
+                            <!-- <small>47% Complete</small> -->
                           </td>
                           <td>
-                            <a> $900</a>
-                            <!-- <button type="button" class="btn btn-success btn-xs">Success</button> -->
-                          </td>
+                             <a>$700</a>
+                           <!--  <button type="button" class="btn btn-success btn-xs">Success</button>-->
+                          </td> 
                           <td>
                             <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
                             <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar</a>
@@ -132,13 +132,13 @@
                         <tr>
                           <td>3</td>
                           <td>
-                            <a>Mesas</a>
+                            <a>Senior Javascript Developer</a>
                             <br />
-                            <!-- <small>Created 01.01.2015</small> -->
+                            <!-- <small>Creat 01.01.2015</small> -->
                           </td>
                           <td>
                             <ul class="list-inline">
-                               <a>Mesas talladas</a>
+                              <a>31-10-2018</a>
                               <!-- <li>
                                 <img src="images/user.png" class="avatar" alt="Avatar">
                               </li>
@@ -151,15 +151,15 @@
                             </ul>
                           </td>
                           <td class="project_progress">
-                            <a>10</a>
+                            <a>{{user.username|capfirst}}</a>
                             <!-- <div class="progress progress_sm">
                               <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="77"></div>
                             </div>
                             <small>77% Complete</small> -->
                           </td>
                           <td>
-                            <a>$55</a>
-                            <!-- <button type="button" class="btn btn-success btn-xs">Success</button> -->
+                            <a>$900</a>
+                           <!--  <button type="button" class="btn btn-success btn-xs">Success</button> -->
                           </td>
                           <td>
                             <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
@@ -170,14 +170,16 @@
                         <tr>
                           <td>4</td>
                           <td>
-                            <a>Velador</a>
+                            <a>Junior Technical Author</a>
                             <br />
+
+                            
                            <!--  <small>Created 01.01.2015</small> -->
                           </td>
                           <td>
                             <ul class="list-inline">
-                               <a>Veladores de cedro</a>
-                             <!--  <li>
+                               <a>21-9-2018</a>
+                              <!-- <li>
                                 <img src="images/user.png" class="avatar" alt="Avatar">
                               </li>
                               <li>
@@ -192,24 +194,24 @@
                             </ul>
                           </td>
                           <td class="project_progress">
-                               <a> 20</a>
-                            <!-- <div class="progress progress_sm">
+                             <a>{{user.username|capfirst}}</a>
+                           <!--  <div class="progress progress_sm">
                               <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
                             </div>
                             <small>60% Complete</small> -->
                           </td>
                           <td>
-                              <a>$80 </a>
+                            <a>$1000</a>
                            <!--  <button type="button" class="btn btn-success btn-xs">Success</button> -->
                           </td>
                           <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver</a>
+                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
                             <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
                             <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
                           </td>
                         </tr>
                         <!-- <tr>
-                          <td>#</td>
+                          <td>5</td>
                           <td>
                             <a>Pesamakini Backend UI</a>
                             <br />
@@ -238,13 +240,13 @@
                             <button type="button" class="btn btn-success btn-xs">Success</button>
                           </td>
                           <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
+                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar</a>
+                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
                           </td>
                         </tr>
                         <tr>
-                          <td>#</td>
+                          <td>6</td>
                           <td>
                             <a>Pesamakini Backend UI</a>
                             <br />
@@ -276,13 +278,13 @@
                             <button type="button" class="btn btn-success btn-xs">Success</button>
                           </td>
                           <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
+                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar</a>
+                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
                           </td>
                         </tr>
                         <tr>
-                          <td>#</td>
+                          <td>7</td>
                           <td>
                             <a>Pesamakini Backend UI</a>
                             <br />
@@ -308,13 +310,13 @@
                             <button type="button" class="btn btn-success btn-xs">Success</button>
                           </td>
                           <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
+                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
+                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
                           </td>
                         </tr>
                         <tr>
-                          <td>#</td>
+                          <td>8</td>
                           <td>
                             <a>Pesamakini Backend UI</a>
                             <br />
@@ -343,13 +345,13 @@
                             <button type="button" class="btn btn-success btn-xs">Success</button>
                           </td>
                           <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
+                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar</a>
+                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
                           </td>
                         </tr>
                         <tr>
-                          <td>#</td>
+                          <td>9</td>
                           <td>
                             <a>Pesamakini Backend UI</a>
                             <br />
@@ -381,9 +383,9 @@
                             <button type="button" class="btn btn-success btn-xs">Success</button>
                           </td>
                           <td>
-                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
+                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
+                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eliminar </a>
                           </td>
                         </tr> -->
                       </tbody>
@@ -397,5 +399,7 @@
           </div>
         </div>
         <!-- /page content -->
+
+
 
 {% endblock contenido %}

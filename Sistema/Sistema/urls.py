@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^listar_productos/', views.productos_list, name='productos_list'),
     url(r'^crear_usuarios/', views.usuarios, name='usuarios'),
     url(r'^nueva_venta/', views.factura_venta, name='factura_venta'),
+    url(r'^listar_factura/', views.factura_list, name='factura_list'),
     url(r'^calendario/', views.calendario, name='calendario'),
     url(r'^calculadora/', views.calculadora, name='calculadora'),
 
