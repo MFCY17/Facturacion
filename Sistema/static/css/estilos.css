@@ -24,7 +24,10 @@ h2{
     width: 210px;
     margin: auto;
     perspective: 800px;
-    position: relative;
+    position: fixed;
+    top:10px;
+    left:220px;
+    right:20px;
     margin-top: 190px;
 }
 

@@ -42,6 +42,8 @@
     <link href="{%static 'vendors/fullcalendar/dist/fullcalendar.print.css'%}" rel="stylesheet" media="print">
     <!-- bootstrap-daterangepicker -->
     <link href="{%static 'vendors/bootstrap-daterangepicker/daterangepicker.css'%}" rel="stylesheet">
+     <!-- Select2 -->
+    <link href="{%static 'vendors/select2/dist/css/select2.min.css'%}" rel="stylesheet">
 
     
 
@@ -119,7 +121,7 @@
                 </li>
                 <li><a><i class="fa fa-usd"></i> Creditos <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="#">Listar</a></li>
+                    <li><a href="{% url 'credito_list' %}">Listar</a></li>
                    <!-- <li><a href="#">Perfil del usuario</a></li>
                     <li><a href="#">Configuración</a></li>
                      <li><a href="#">ECharts</a></li>
@@ -129,7 +131,7 @@
                 <li><a><i class="fa fa-wrench"></i> Administración de accesos <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="{% url 'usuarios' %}">Usuarios</a></li>
-                    <!-- <li><a href="#">Fixed Footer</a></li> -->
+                     <li><a href="{% url 'usuarios_list' %}">Listar Usuarios</a></li> 
                   </ul>
                 </li>
               </ul>
@@ -139,7 +141,7 @@
               <ul class="nav side-menu">
                 <li><a><i class="fa fa-bar-chart-o"></i> Reportes <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="#">Reportes de ventas</a></li>
+                    <li><a href="{% url 'reporte_venta' %}">Reportes de ventas</a></li>
                     <!-- <li><a href="#">Projects</a></li>
                     <li><a href="#">Project Detail</a></li>
                     <li><a href="#">Contacts</a></li>
@@ -148,9 +150,9 @@
                 </li>
                 <li><a><i class="fa fa-cog"></i> Configuración <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                      <li><a href="#">Perfil de la empresa</a></li>
-                      <li><a href="#">Perfil del usuario</a></li>
-                      <li><a href="#">Configuración</a></li>
+                      <li><a href="{% url 'perfil_empresa' %}">Perfil de la empresa</a></li>
+                      <li><a href="{% url 'perfil_usuario' %}">Perfil del usuario</a></li>
+                      <li><a href="{% url 'configuracion' %}">Configuración</a></li>
                     <!--<li><a href="#">Listar</a></li>
                      <li><a href="#">#</a></li>
                     <li><a href="#">500 Error</a></li>
@@ -204,14 +206,14 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Perfil</a></li>
+                    <li><a href="#"> Perfil</a></li>
                     <li>
-                      <a href="javascript:;">
+                      <a href="#">
                         <!-- <span class="badge bg-red pull-right">50%</span> -->
                         <span>Configuración</span>
                       </a>
                     </li>
-                    <li><a href="javascript:;">Ayuda</a></li>
+                    <li><a href="#">Ayuda</a></li>
                     <li><a href="{% url 'login' %}"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesión</a></li>
                   </ul>
                 </li>
@@ -227,6 +229,7 @@
         {% block contenido %}
         <!-- page content -->
          <div class="right_col" role="main">
+
           <h2>Sistema de Facturación</h2>
          <!-- <body>-->         
              <div class="content-all"> 
@@ -242,7 +245,7 @@
                     <figure><img src="{%static 'image/img9.jpg'%}" style="max-width:100%;width:auto;height:auto;"></figure>
                     <figure><img src="{%static 'image/img10.jpg'%}" style="max-width:100%;width:auto;height:auto;" ></figure>
                 </div>
-             </div> -
+             </div> 
            </div>
         <!-- /page content -->
         {% endblock contenido %}

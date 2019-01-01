@@ -43,7 +43,7 @@
          <div class="row">
 
                                     <div class="col-md-5">
-                                        <label>Cliente</label>
+                                        <label>Cliente*</label>
 										<div class="input-group">
 											<select class="form-control select2 select2-hidden-accessible" name="customer_id" id="customer_id" tabindex="-1" aria-hidden="true">
 												<option value="">Selecciona Cliente</option>
@@ -71,10 +71,19 @@
 									
 									<div class="col-md-2">
 
-                                        <label>Agregar productos</label>
+                                        <label>Agregar productos*</label>
                                        <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i> Buscar productos</button>
                                     </div>
-                                    
+                                     
+                                     <div class="col-md-12">                               
+                                      <label for="heard">Condiciones de pago*</label>
+                          <select id="heard" class="form-control" required>
+                            <option value="">Pagado</option>
+                            <option value="press">Credito</option>
+                            <!-- <option value="net">Internet</option>
+                            <option value="mouth">Word of mouth</option> -->
+                          </select>
+
 
 					
 					<div id="resultados_ajax" class="col-md-12" style="margin-top:4px"></div><!-- Carga los datos ajax -->
